@@ -1,17 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { Navbar, Nav, Image, DropdownButton, Dropdown, Button, ButtonGroup } from "react-bootstrap";
 import swImage from "../../img/StartW.png";
+import { Context } from "../store/appContext";
 
-export const Navbar = () => {
+export const NavbarMenu = () => {
 	const [shown, setShown] = useState(false);
+
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">
+		<Navbar>
+			<Navbar.Brand>
+				{/* El Navbar.Brand "Propiedad" es donde ponemos el logo */}
+				<Link to="/">
 					<img src={swImage} width="100px" height="50%" />
-				</span>
-			</Link>
+				</Link>
+			</Navbar.Brand>
 			<div className="ml-auto pr-5">
 				<div className={"dropdown " + (shown ? "show" : "")}>
 					<button
@@ -40,6 +43,6 @@ export const Navbar = () => {
 					</div>
 				</div>
 			</div>
-		</nav>
+		</Navbar>
 	);
 };
