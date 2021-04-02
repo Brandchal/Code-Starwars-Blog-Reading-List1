@@ -53,6 +53,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				console.log(">>DATA>>", json);
 				setStore({ vehicles: json.results });
+			},
+
+			setFavorites: name => {
+				const store = getStore();
+				setStore({ favorites: [...store.favorites, name] });
+			},
+
+			deleteFavorite: indice => {
+				let store = getStore().favorites;
+				setStore({ favorites: [...store.slice(0, indice), ...store.slice(indice + 1)] });
 			}
 		}
 	};
