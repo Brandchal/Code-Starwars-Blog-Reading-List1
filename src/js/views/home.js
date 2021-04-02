@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-horizon/src/bootstrap-horizon.css";
-import Card from "../component/peopleCard";
+import PeopleCard from "../component/peopleCard";
 import PlanetCard from "../component/planetCard";
 import VehicleCard from "../component/vehicleCard";
 import DetailPeople from "./detailpeople";
@@ -22,7 +22,7 @@ export const Home = () => {
 					{store.people.map((people, index) => {
 						let peopleid = `${index}`;
 						return (
-							<Card
+							<PeopleCard
 								name={people.name}
 								age={people.birth_year}
 								height={people.height}
@@ -32,7 +32,7 @@ export const Home = () => {
 								eye_color={people.eye_color}
 								gender={people.gender}
 								url={people.url}
-								key={index} // index
+								key={index}
 								id={peopleid}
 							/>
 						);

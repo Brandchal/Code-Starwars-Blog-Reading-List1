@@ -1,58 +1,58 @@
 import React, { useEffect, useContext } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Card, CardDeck, ListGroup, ListGroupItem } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { BsHeart } from "react-icons/bs";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaCartArrowDown } from "react-icons/fa";
 
-function Card(props) {
+function PeopleCard(props) {
 	let idpeople = props.id;
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="col">
-			<div className="card-group">
-				<div className="card" style={{ width: "18rem" }}>
-					<img className="card-img-top" src="https://www.dummyimage.com/400x200" alt="Card image cap" />
-					<div className="card-body">
-						<h4 className="card-title text-left">{props.name}</h4>
-						<p className="card-text">Gender: {props.gender}</p>
-						<p className="card-text">Hair color: {props.hair_color}</p>
-						<p className="card-text">Eye color: {props.eye_color}</p>
-						<Link to={"/detailpeople/" + idpeople}>
-							<button type="button" className="btn btn-outline-primary">
-								Learn more
-							</button>
-						</Link>
-
-						{/* 	<button type="button" className="btn btn-outline-danger ml-3">
-							<i className="far fa-heart" />
-						</button> */}
-
-						{store.favorites.indexOf(props.name) === -1 ? (
-							<button
-								type="button"
-								className="btn btn-outline-danger ml-3"
-								onClick={() => actions.addFav(props.name)}>
-								<BsHeart />
-							</button>
-						) : (
-							<button
-								type="button"
-								className="btn btn-outline-danger ml-3"
-								onClick={() => actions.delFav(props.name)}>
-								<FaHeart />
-							</button>
-						)}
-					</div>
-				</div>
-			</div>
-		</div>
+		<CardDeck style={{ paddingRight: "1.5rem" }}>
+			<Card style={{ width: "18rem" }}>
+				<Card.Img
+					style={{ height: 190 }}
+					variant="top"
+					src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/test/5cbeea135cafe88451149213/sw1.jpg"
+					alt="Image not available"
+				/>
+				<Card.Body>
+					<Card.Title>{props.name}</Card.Title>
+					<ListGroup className="list-group-flush">
+						<ListGroupItem>Gender: {props.gender}</ListGroupItem>
+						<ListGroupItem>Hair color: {props.hair_color}</ListGroupItem>
+						<ListGroupItem>Eye color: {props.eye_color}</ListGroupItem>
+					</ListGroup>
+					<Link to={"/detailpeople/" + idpeople}>
+						<button type="button" className="btn btn-outline-primary">
+							Learn more
+						</button>
+					</Link>
+					{store.favorites.indexOf(props.name) === -1 ? (
+						<button
+							type="button"
+							className="btn btn-outline-danger ml-3"
+							onClick={() => actions.addFav(props.name)}>
+							<BsHeart />
+						</button>
+					) : (
+						<button
+							type="button"
+							className="btn btn-outline-danger ml-3"
+							onClick={() => actions.delFav(props.name)}>
+							<FaHeart />
+						</button>
+					)}
+				</Card.Body>
+			</Card>
+		</CardDeck>
 	);
 }
 
-Card.propTypes = {
+PeopleCard.propTypes = {
 	name: PropTypes.string,
 	age: PropTypes.string,
 	height: PropTypes.string,
@@ -65,4 +65,4 @@ Card.propTypes = {
 	gender: PropTypes.string
 };
 
-export default Card;
+export default PeopleCard;

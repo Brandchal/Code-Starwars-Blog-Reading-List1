@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Card, CardDeck, ListGroup, ListGroupItem } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -11,42 +11,45 @@ function PlanetCard(props) {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="col">
-			<div className="card-group">
-				<div className="card" style={{ width: "18rem" }}>
-					<img className="card-img-top" src="https://www.dummyimage.com/400x200" alt="Card image cap" />
-					<div className="card-body">
-						<h4 className="card-title text-left">{props.name}</h4>
-						<p className="card-text">Population: {props.population}</p>
-						<p className="card-text">Climate: {props.climate}</p>
-						<p className="card-text">Terrain: {props.terrain}</p>
-						<Link to={"/detailplanets/" + idplanets}>
-							<button type="button" className="btn btn-outline-primary">
-								Learn more
-							</button>
-						</Link>
-						{/* 	<button type="button" className="btn btn-outline-danger ml-3">
-							<i className="far fa-heart" />
-						</button> */}
-						{store.favorites.indexOf(props.name) === -1 ? (
-							<button
-								type="button"
-								className="btn btn-outline-danger ml-3"
-								onClick={() => actions.addFav(props.name)}>
-								<BsHeart />
-							</button>
-						) : (
-							<button
-								type="button"
-								className="btn btn-outline-danger ml-3"
-								onClick={() => actions.delFav(props.name)}>
-								<FaHeart />
-							</button>
-						)}
-					</div>
-				</div>
-			</div>
-		</div>
+		<CardDeck style={{ paddingRight: "1.5rem" }}>
+			<Card style={{ width: "18rem" }}>
+				<Card.Img
+					style={{ height: 190 }}
+					variant="top"
+					src="https://i.blogs.es/69fdcc/star-wars-saga/450_1000.jpg"
+					alt="Image not available"
+				/>
+				<Card.Body>
+					<Card.Title>{props.name}</Card.Title>
+					<ListGroup className="list-group-flush">
+						<ListGroupItem>Population: {props.population}</ListGroupItem>
+						<ListGroupItem>Climate: {props.climate}</ListGroupItem>
+						<ListGroupItem>Terrain: {props.terrain}</ListGroupItem>
+					</ListGroup>
+					<Link to={"/detailplanets/" + idplanets}>
+						<button type="button" className="btn btn-outline-primary">
+							Learn more
+						</button>
+					</Link>
+
+					{store.favorites.indexOf(props.name) === -1 ? (
+						<button
+							type="button"
+							className="btn btn-outline-danger ml-3"
+							onClick={() => actions.addFav(props.name)}>
+							<BsHeart />
+						</button>
+					) : (
+						<button
+							type="button"
+							className="btn btn-outline-danger ml-3"
+							onClick={() => actions.delFav(props.name)}>
+							<FaHeart />
+						</button>
+					)}
+				</Card.Body>
+			</Card>
+		</CardDeck>
 	);
 }
 

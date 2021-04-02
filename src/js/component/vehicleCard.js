@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Card, CardDeck, ListGroup, ListGroupItem } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -11,42 +11,45 @@ function VehicleCard(props) {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="col">
-			<div className="card-group">
-				<div className="card" style={{ width: "18rem" }}>
-					<img className="card-img-top" src="https://www.dummyimage.com/400x200" alt="Card image cap" />
-					<div className="card-body">
-						<h4 className="card-title text-left text-truncate">{props.name}</h4>
-						<p className="card-text text-truncate">Manufacturer: {props.manufacturer}</p>
-						<p className="card-text text-truncate">Model: {props.model}</p>
-						<p className="card-text">Passengers: {props.passengers}</p>
-						<Link to={"/detailvehicles/" + idvehicles}>
-							<button type="button" className="btn btn-outline-primary">
-								Learn more
-							</button>
-						</Link>
-						{/* 	<button type="button" className="btn btn-outline-danger ml-3">
-							<i className="far fa-heart" />
-						</button> */}
-						{store.favorites.indexOf(props.name) === -1 ? (
-							<button
-								type="button"
-								className="btn btn-outline-danger ml-3"
-								onClick={() => actions.addFav(props.name)}>
-								<BsHeart />
-							</button>
-						) : (
-							<button
-								type="button"
-								className="btn btn-outline-danger ml-3"
-								onClick={() => actions.delFav(props.name)}>
-								<FaHeart />
-							</button>
-						)}
-					</div>
-				</div>
-			</div>
-		</div>
+		<CardDeck style={{ paddingRight: "1.5rem" }}>
+			<Card style={{ width: "18rem" }}>
+				<Card.Img
+					style={{ height: 190 }}
+					variant="top"
+					src="https://www.gannett-cdn.com/-mm-/25ad22519f17d7850087576c7d2931f55b837a64/c=0-240-4711-2902/local/-/media/2017/12/01/USATODAY/USATODAY/636477632659207598-sw4.JPG?width=660&height=372&fit=crop&format=pjpg&auto=webp"
+					alt="Image not available"
+				/>
+				<Card.Body>
+					<Card.Title>{props.name}</Card.Title>
+					<ListGroup className="list-group-flush">
+						<ListGroupItem>Manufacturer: {props.manufacturer}</ListGroupItem>
+						<ListGroupItem>Model: {props.model}</ListGroupItem>
+						<ListGroupItem>Passengers: {props.passengers}</ListGroupItem>
+					</ListGroup>
+					<Link to={"/detailvehicles/" + idvehicles}>
+						<button type="button" className="btn btn-outline-primary">
+							Learn more
+						</button>
+					</Link>
+
+					{store.favorites.indexOf(props.name) === -1 ? (
+						<button
+							type="button"
+							className="btn btn-outline-danger ml-3"
+							onClick={() => actions.addFav(props.name)}>
+							<BsHeart />
+						</button>
+					) : (
+						<button
+							type="button"
+							className="btn btn-outline-danger ml-3"
+							onClick={() => actions.delFav(props.name)}>
+							<FaHeart />
+						</button>
+					)}
+				</Card.Body>
+			</Card>
+		</CardDeck>
 	);
 }
 
