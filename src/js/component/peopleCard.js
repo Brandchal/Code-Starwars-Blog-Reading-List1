@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
@@ -10,17 +9,17 @@ import { FaHeart } from "react-icons/fa";
 function Card(props) {
 	let idpeople = props.id;
 	const { store, actions } = useContext(Context);
-	//props.url.replace("http://swapi.dev/api/people/", "").replace("/", "") - 1;
+
 	return (
 		<div className="col">
 			<div className="card-group">
 				<div className="card" style={{ width: "18rem" }}>
 					<img className="card-img-top" src="https://www.dummyimage.com/400x200" alt="Card image cap" />
 					<div className="card-body">
-						<h5 className="card-title text-left">{props.name}</h5>
+						<h4 className="card-title text-left">{props.name}</h4>
 						<p className="card-text">Gender: {props.gender}</p>
-						<p className="card-text">Mass: {props.mass}</p>
-						<p className="card-text">DOB: {props.age}</p>
+						<p className="card-text">Hair color: {props.hair_color}</p>
+						<p className="card-text">Eye color: {props.eye_color}</p>
 						<Link to={"/detailpeople/" + idpeople}>
 							<button type="button" className="btn btn-outline-primary">
 								Learn more

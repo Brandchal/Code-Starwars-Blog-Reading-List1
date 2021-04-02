@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Image, DropdownButton, Dropdown, Button, ButtonGroup } from "react-bootstrap";
+import { Navbar, Nav, Image, DropdownButton, Dropdown, Button, ButtonGroup, Col, Row } from "react-bootstrap";
 import swImage from "../../img/StartW.png";
 import { Context } from "../store/appContext";
+import { FaTrash } from "react-icons/fa";
 
 export const NavbarMenu = () => {
 	const [shown, setShown] = useState(false);
+	const { store, actions } = useContext(Context);
 
 	return (
 		<Navbar>
@@ -15,33 +17,31 @@ export const NavbarMenu = () => {
 					<img src={swImage} width="100px" height="50%" />
 				</Link>
 			</Navbar.Brand>
-			<div className="ml-auto pr-5">
-				<div className={"dropdown " + (shown ? "show" : "")}>
-					<button
-						className="btn btn-primary dropdown-toggle"
-						type="button"
-						id="dropdownMenuButton"
-						data-toggle="dropdown"
-						data-display="static"
-						aria-haspopup="true"
-						onClick={() => setShown(!shown)}
-						aria-expanded="false">
-						Favorites <span className="badge badge-light text-right">0</span>
-					</button>
-					<div
-						className={"dropdown-menu dropdown-menu-right " + (shown ? "show" : "")}
-						aria-labelledby="dropdownMenuButton">
-						<a className="dropdown-item" href="#">
-							Action
-						</a>
-						<a className="dropdown-item" href="#">
-							Another action
-						</a>
-						<a className="dropdown-item" href="#">
-							Something else here
-						</a>
-					</div>
-				</div>
+			<div className="ml-auto pr-6">
+				<Dropdown>
+					<Dropdown.Toggle variant="success" id="dropdown-basic">
+						Favorites {store.favorites.length}
+					</Dropdown.Toggle>
+
+					<Dropdown.Menu alignRight className="dropdown dropdown-align-right">
+						{store.favorites.length > 0 ? (
+							<ul>
+								{store.favorites.map((item, index) => {
+									return (
+										<li key={index}>
+											{item}
+											<button className="trash" onClick={() => actions.delFav(item)}>
+												<FaTrash />
+											</button>
+										</li>
+									);
+								})}
+							</ul>
+						) : (
+							<p className="listfav">(empy) </p>
+						)}
+					</Dropdown.Menu>
+				</Dropdown>
 			</div>
 		</Navbar>
 	);

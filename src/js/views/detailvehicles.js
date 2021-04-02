@@ -19,9 +19,10 @@ export const DetailVehicles = () => {
 						<div className="media-body">
 							<h5 className="mt-0">{store.vehicles[params.theid].name}</h5>
 							<h6>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-								sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-								condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+								Lorem ipsum dolor sit amet consectetur adipiscing elit mi vestibulum pharetra, volutpat
+								convallis potenti donec mollis iaculis lacus pulvinar erat, dignissim mauris commodo dis
+								dictumst tortor placerat risus nec. Fringilla cras ridiculus auctor tellus at convallis
+								elementum vehicula arcu ac.
 							</h6>
 						</div>
 					</div>
