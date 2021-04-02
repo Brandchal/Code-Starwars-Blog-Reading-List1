@@ -8,95 +8,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadPeople: () => {
-				fetch("https://swapi.dev/api/people/", {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-					.then(resp => {
-						//console.log(resp.ok);
-						if (!resp.ok) throw Error(resp.statusText);
-						//console.log(resp.status);
-						return resp.json();
-					})
-					.then(data => {
-						setStore({ people: data.results });
-					})
-					.catch(error => {
-						console.log(error);
-					});
-				/** https://swapi.dev/api/people/1/
-					fetch("https://swapi.dev/api/people/1/").then().then(data => setStore({ "foo": data.bar }))
-                */
-			},
-			loadPlanets: () => {
-				fetch("https://swapi.dev/api/planets/", {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-					.then(resp => {
-						console.log(resp.ok);
-						if (!resp.ok) throw Error(resp.statusText);
-						console.log(resp.status);
-						return resp.json();
-					})
-					.then(data => {
-						setStore({ planets: data.results });
-					})
-					.catch(error => {
-						console.log(error);
-					});
-			},
-			loadVehicles: () => {
-				fetch("https://swapi.dev/api/vehicles/", {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-					.then(resp => {
-						console.log(resp.ok);
-						if (!resp.ok) throw Error(resp.statusText);
-						console.log(resp.status);
-						return resp.json();
-					})
-					.then(data => {
-						setStore({ vehicles: data.results });
-					})
-					.catch(error => {
-						console.log(error);
-					});
-			},
-			addFavorites: (id, type) => {
-				const store = getStore();
-				const favorite = { id, type };
-				setStore({ favorites: store.favorites.concat(favorite) });
-			},
-			loadSomeData: () => {
-				/** 
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+			fetchPeople: async () => {
+				// Promesa con Async await, funcionan de la mano
+				const URL = "https://swapi.dev/api/people/";
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const res = await fetch(URL, CONFIG); //Variable donde se almacena la promesa
+				const json = await res.json(); // Transformar res a formato json
 
-				//reset the global store
-				setStore({ demo: demo });
+				console.log(">>DATA>>", json);
+				setStore({ people: json.results }); //Función que me permite cambiar el store "Guardar en el store"
+			},
+
+			fetchPlanet: async () => {
+				const URL = "https://swapi.dev/api/planets/";
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const res = await fetch(URL, CONFIG);
+				const json = await res.json();
+
+				console.log(">>DATA>>", json);
+				setStore({ planets: json.results });
+			},
+
+			fetchVehicle: async () => {
+				const URL = "https://swapi.dev/api/vehicles/";
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(URL, CONFIG);
+				const json = await response.json();
+
+				console.log(">>DATA>>", json);
+				setStore({ vehicles: json.results });
 			}
 		}
 	};

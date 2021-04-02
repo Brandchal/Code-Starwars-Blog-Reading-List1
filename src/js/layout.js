@@ -1,13 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+import { Container, Row, Col } from "react-bootstrap"; /*Destructure*/
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
 import { DetailPeople } from "./views/detailpeople";
 import { DetailPlanets } from "./views/detailplanets";
 import { DetailVehicles } from "./views/detailvehicles";
-import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -20,7 +19,7 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="d-flex flex-column h-100">
+		<Container>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
@@ -28,9 +27,7 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
+
 						<Route exact path="/detailpeople/:theid">
 							<DetailPeople />
 						</Route>
@@ -40,9 +37,7 @@ const Layout = () => {
 						<Route exact path="/detailvehicles/:theid">
 							<DetailVehicles />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
+
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
@@ -50,7 +45,7 @@ const Layout = () => {
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
-		</div>
+		</Container>
 	);
 };
 
