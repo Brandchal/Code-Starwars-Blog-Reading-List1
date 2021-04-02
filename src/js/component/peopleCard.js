@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { BsHeart } from "react-icons/bs";
+import { FaHeart } from "react-icons/fa";
 
 function Card(props) {
 	let idpeople = props.id;
+	const { store, actions } = useContext(Context);
 	//props.url.replace("http://swapi.dev/api/people/", "").replace("/", "") - 1;
 	return (
 		<div className="col">
@@ -21,9 +26,26 @@ function Card(props) {
 								Learn more
 							</button>
 						</Link>
-						<button type="button" className="btn btn-outline-danger ml-3">
+
+						{/* 	<button type="button" className="btn btn-outline-danger ml-3">
 							<i className="far fa-heart" />
-						</button>
+						</button> */}
+
+						{store.favorites.indexOf(props.name) === -1 ? (
+							<button
+								type="button"
+								className="btn btn-outline-danger ml-3"
+								onClick={() => actions.addFav(props.name)}>
+								<BsHeart />
+							</button>
+						) : (
+							<button
+								type="button"
+								className="btn btn-outline-danger ml-3"
+								onClick={() => actions.delFav(props.name)}>
+								<FaHeart />
+							</button>
+						)}
 					</div>
 				</div>
 			</div>

@@ -105,3 +105,5 @@ Install.
  npm install reactjs-popup --save
  --------------------
  npm install bootstrap-horizon
+ --------------------
+ npm install react-icons --save

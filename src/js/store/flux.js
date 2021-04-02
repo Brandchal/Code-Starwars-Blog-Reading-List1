@@ -55,14 +55,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ vehicles: json.results });
 			},
 
-			setFavorites: name => {
+			addFav: async value => {
 				const store = getStore();
-				setStore({ favorites: [...store.favorites, name] });
+				const { favorites } = store;
+
+				setStore({ favorites: [...favorites, value] });
 			},
 
-			deleteFavorite: indice => {
-				let store = getStore().favorites;
-				setStore({ favorites: [...store.slice(0, indice), ...store.slice(indice + 1)] });
+			delFav: async value => {
+				const store = getStore();
+				const { favorites } = store;
+				const favo = favorites.filter(item => item !== value);
+
+				setStore({ favorites: [...favo] });
 			}
 		}
 	};
