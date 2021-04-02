@@ -15,7 +15,7 @@ function Card(props) {
 		<div className="col">
 			<div className="card-group">
 				<div className="card" style={{ width: "18rem" }}>
-					<img className="card-img-top" src="https://www.dummyimage.com/400x200" alt={props.name} />
+					<img className="card-img-top" src="https://www.dummyimage.com/400x200" alt="Card image cap" />
 					<div className="card-body">
 						<h5 className="card-title text-left">{props.name}</h5>
 						<p className="card-text">Gender: {props.gender}</p>

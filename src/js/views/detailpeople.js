@@ -18,9 +18,11 @@ export const DetailPeople = () => {
 						/>
 						<div className="media-body">
 							<h5 className="mt-0">{store.people[params.theid].name}</h5>
-							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
-							Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc
-							ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+							<h6>
+								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+								sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
+								condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+							</h6>
 						</div>
 					</div>
 				</div>
