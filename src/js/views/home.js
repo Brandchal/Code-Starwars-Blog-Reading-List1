@@ -16,7 +16,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<div className="container mt-5">
-			<h1 className="text-light">Characters</h1>
+			<h1 className="text-danger">Characters</h1>
 			<div className="container horizontal-scrollable">
 				<div className="row row-horizon flex-nowrap py-3">
 					{store.people.map((people, index) => {
