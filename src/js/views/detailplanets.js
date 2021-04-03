@@ -13,17 +13,18 @@ export const DetailPlanets = () => {
 					<div className="media">
 						<img
 							className="mr-3"
-							src="https://www.dummyimage.com/300x200"
-							alt="Generic placeholder image"
+							src="https://i.blogs.es/69fdcc/star-wars-saga/450_1000.jpg"
+							alt="Image not available"
+							style={{ height: 190, width: "18rem" }}
 						/>
 						<div className="media-body">
 							<h5 className="mt-0">{store.planets[params.theid].name}</h5>
-							<h6>
+							<p>
 								Lorem ipsum dolor sit amet consectetur adipiscing elit mi vestibulum pharetra, volutpat
 								convallis potenti donec mollis iaculis lacus pulvinar erat, dignissim mauris commodo dis
 								dictumst tortor placerat risus nec. Fringilla cras ridiculus auctor tellus at convallis
 								elementum vehicula arcu ac.
-							</h6>
+							</p>
 						</div>
 					</div>
 				</div>

@@ -13,17 +13,18 @@ export const DetailPeople = () => {
 					<div className="media">
 						<img
 							className="mr-3"
-							src="https://www.dummyimage.com/300x200"
-							alt="Generic placeholder image"
+							src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/test/5cbeea135cafe88451149213/sw1.jpg"
+							alt="Image not available"
+							style={{ height: 190, width: "18rem" }}
 						/>
 						<div className="media-body">
 							<h5 className="mt-0">{store.people[params.theid].name}</h5>
-							<h6>
+							<p>
 								Lorem ipsum dolor sit amet consectetur adipiscing elit mi vestibulum pharetra, volutpat
 								convallis potenti donec mollis iaculis lacus pulvinar erat, dignissim mauris commodo dis
 								dictumst tortor placerat risus nec. Fringilla cras ridiculus auctor tellus at convallis
 								elementum vehicula arcu ac.
-							</h6>
+							</p>
 						</div>
 					</div>
 				</div>

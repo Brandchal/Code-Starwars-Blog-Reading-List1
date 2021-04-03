@@ -14,7 +14,7 @@ export const NavbarMenu = () => {
 			<Navbar.Brand>
 				{/* El Navbar.Brand "Propiedad" es donde ponemos el logo */}
 				<Link to="/">
-					<img src={swImage} width="100px" height="50%" />
+					<img className="d-inline-block align-top" src={swImage} width="100px" height="50%" />
 				</Link>
 			</Navbar.Brand>
 			<div className="ml-auto pr-6">
@@ -30,7 +30,7 @@ export const NavbarMenu = () => {
 									return (
 										<li key={index}>
 											{item}
-											<button className="trash" onClick={() => actions.delFav(item)}>
+											<button className="trash" onClick={() => actions.deleteFavorite(item)}>
 												<FaTrash />
 											</button>
 										</li>

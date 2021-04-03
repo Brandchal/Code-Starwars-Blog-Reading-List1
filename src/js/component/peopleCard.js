@@ -35,14 +35,14 @@ function PeopleCard(props) {
 						<button
 							type="button"
 							className="btn btn-outline-danger ml-3"
-							onClick={() => actions.addFav(props.name)}>
+							onClick={() => actions.setFavorites(props.name)}>
 							<BsHeart />
 						</button>
 					) : (
 						<button
 							type="button"
 							className="btn btn-outline-danger ml-3"
-							onClick={() => actions.delFav(props.name)}>
+							onClick={() => actions.deleteFavorite(props.name)}>
 							<FaHeart />
 						</button>
 					)}

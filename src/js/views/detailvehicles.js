@@ -13,17 +13,18 @@ export const DetailVehicles = () => {
 					<div className="media">
 						<img
 							className="mr-3"
-							src="https://www.dummyimage.com/300x200"
-							alt="Generic placeholder image"
+							src="https://www.gannett-cdn.com/-mm-/25ad22519f17d7850087576c7d2931f55b837a64/c=0-240-4711-2902/local/-/media/2017/12/01/USATODAY/USATODAY/636477632659207598-sw4.JPG?width=660&height=372&fit=crop&format=pjpg&auto=webp"
+							alt="Image not available"
+							style={{ height: 190, width: "18rem" }}
 						/>
 						<div className="media-body">
 							<h5 className="mt-0">{store.vehicles[params.theid].name}</h5>
-							<h6>
+							<p>
 								Lorem ipsum dolor sit amet consectetur adipiscing elit mi vestibulum pharetra, volutpat
 								convallis potenti donec mollis iaculis lacus pulvinar erat, dignissim mauris commodo dis
 								dictumst tortor placerat risus nec. Fringilla cras ridiculus auctor tellus at convallis
 								elementum vehicula arcu ac.
-							</h6>
+							</p>
 						</div>
 					</div>
 				</div>
