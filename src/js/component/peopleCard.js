@@ -7,7 +7,6 @@ import { BsHeart } from "react-icons/bs";
 import { FaHeart, FaCartArrowDown } from "react-icons/fa";
 
 function PeopleCard(props) {
-	let idpeople = props.id;
 	const { store, actions } = useContext(Context);
 
 	return (
@@ -26,7 +25,7 @@ function PeopleCard(props) {
 						<ListGroupItem>Hair color: {props.hair_color}</ListGroupItem>
 						<ListGroupItem>Eye color: {props.eye_color}</ListGroupItem>
 					</ListGroup>
-					<Link to={"/detailpeople/" + idpeople}>
+					<Link to={"/detailpeople/" + props.id}>
 						<button type="button" className="btn btn-outline-primary">
 							Learn more
 						</button>

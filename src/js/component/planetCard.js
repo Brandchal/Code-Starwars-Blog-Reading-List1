@@ -7,7 +7,6 @@ import { BsHeart } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 
 function PlanetCard(props) {
-	let idplanets = props.id;
 	const { store, actions } = useContext(Context);
 
 	return (
@@ -25,7 +24,7 @@ function PlanetCard(props) {
 						<ListGroupItem>Population: {props.population}</ListGroupItem>
 						<ListGroupItem>Terrain: {props.terrain}</ListGroupItem>
 					</ListGroup>
-					<Link to={"/detailplanets/" + idplanets}>
+					<Link to={"/detailplanets/" + props.id}>
 						<button type="button" className="btn btn-outline-primary">
 							Learn more
 						</button>

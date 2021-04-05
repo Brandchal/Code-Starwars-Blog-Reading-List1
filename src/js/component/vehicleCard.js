@@ -7,7 +7,6 @@ import { BsHeart } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 
 function VehicleCard(props) {
-	let idvehicles = props.id;
 	const { store, actions } = useContext(Context);
 
 	return (
@@ -26,7 +25,7 @@ function VehicleCard(props) {
 						<ListGroupItem>Model: {props.model}</ListGroupItem>
 						<ListGroupItem>Passengers: {props.passengers}</ListGroupItem>
 					</ListGroup>
-					<Link to={"/detailvehicles/" + idvehicles}>
+					<Link to={"/detailvehicles/" + props.id}>
 						<button type="button" className="btn btn-outline-primary">
 							Learn more
 						</button>
