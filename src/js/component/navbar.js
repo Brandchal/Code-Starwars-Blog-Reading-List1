@@ -10,7 +10,7 @@ export const NavbarMenu = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<Navbar>
+		<Navbar fixed="top" bg="dark" fluid="true">
 			<Navbar.Brand>
 				{/* El Navbar.Brand "Propiedad" es donde ponemos el logo */}
 				<Link to="/">
@@ -18,8 +18,8 @@ export const NavbarMenu = () => {
 				</Link>
 			</Navbar.Brand>
 			<div className="ml-auto pr-6">
-				<Dropdown>
-					<Dropdown.Toggle variant="success" id="dropdown-basic">
+				<Dropdown className="mb-4">
+					<Dropdown.Toggle variant="outline-info" id="dropdown-basic">
 						Favorites {store.favorites.length}
 					</Dropdown.Toggle>
 

@@ -23,18 +23,26 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<NavbarMenu />
+					<br />
+					<br />
 					<Switch>
 						<Route exact path="/">
 							<Home />
 						</Route>
 
 						<Route exact path="/detailpeople/:theid">
+							<br />
+							<br />
 							<DetailPeople />
 						</Route>
 						<Route exact path="/detailplanets/:theid">
+							<br />
+							<br />
 							<DetailPlanets />
 						</Route>
 						<Route exact path="/detailvehicles/:theid">
+							<br />
+							<br />
 							<DetailVehicles />
 						</Route>
 
